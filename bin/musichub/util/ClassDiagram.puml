@@ -1,0 +1,220 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package musichub.business {
+
+    class Album{
+
+    - artist: String
+    - lengthInSeconds: interface
+    - uuid: UUID
+    - date: Date
+    - songsUIDS: ArrayList<UUID>
+
+    + Album(var1: String, var2: String, var3: int,
+    var4: String, var5: String, var6: ArrayList<UUID>)
+    + Album(var1: String, var2: String, var3: int,
+    var4: String)
+    + Album(var1:Element) throws Exception
+    + addSong(var1: UUID): void
+    + getSongs(): List<UUID>
+    + getTitle(): String
+    + getDate(): Date
+    +createXMLElement(var1: Document, var2: Element): void
+    }
+
+    class AudioBook{
+
+    - language: Language
+    - category: Category
+
+    + AudioBook(var1: String, var2: String, var3: int,
+    var4: String, var5: String, var6: String, var7: String)
+    + AudioBook(var1: String, var2: String, var3: int,
+    var4: String, var5: String, var6: String)
+    + AudioBook(var1: Element) throws Exception
+    + getLanguage(): Language
+    + getCategory(): Category
+    + setLanguage(var1: String): void
+    + setCategory(var1: String): void
+    + toString(): String
+    + createXMLElement(var1: Document, var2: Element)
+
+    }
+
+    abstract class AudioElement{
+
+    # title: String
+    # artist: String
+    # lengthInSeconds: int
+    # uuid: UUID
+    # content: String
+
+    + AudioElement(var1: String, var2: String, var3: int,
+    var4: String, var5: String)
+    + AudioElement(var1: String, var2: String, var3: int,
+    var4: String)
+    + AudioElement(var1: Element) throws Exception
+    + getUUID(): UUID
+    + getArtist(): String
+    + getTitle(): String
+    + toString(): String
+    + createXMLElement(var1: Document, var2: Element): void
+
+    }
+
+    enum Category {
+        YOUTH
+        NOVEL
+        THEATER
+        DOCUMENTARY
+        SPEECH
+    }
+
+    enum Genre {
+        CLASSIC
+        HIPHOP
+        ROCK
+        POP
+        RAP
+    }
+
+    enum Language {
+        ENGLISH
+        ITALIAN
+        SPANISH
+        GERMAN
+    }
+
+    class MusicHub{
+
+    - albums: List<Album>
+    - playlists: List<Playlist>
+    - elements: List<AudioElement>
+    + {static} DIR:String
+    + {static} ALBUMS_FILE_PATH: String
+    + {static} PLAYLISTS_FILE_PATH: String
+    + {static} ELEMENTS_FILE_PATH: String
+    - xmlHandler: XMLHandler
+
+    + MusicHub()
+    + addElement(var1:AudioElement): void
+    + addAlbum(var1: Album): void
+    + addPlaylist(var1: PlayList): void
+    + deletePlayList(var1: String) throws NoPlayListFoundException: void
+    + albums(): Iterator<Album>
+    + playlists(): Iterator<PlayList>
+    + elements(): Iterator<AudioElement>
+    + getAlbumsTitlesSortedByDate(): String
+    + getAudiobooksTitlesSortedByAuthor(): String
+    + getAlbumSongs(var1: String) throws NoAlbumFoundException: List<AudioElement>
+    + getAlbumSongsSortedByGenre(var1: String) throws NoAlbumFoundException: List<Song>
+    + addElementToAlbum(var1: String, var2: String) throws NoAlbumFoundException, NoElementFoundException: void
+    + addElementToPlayList(var1: String, var2: String) throws NoPlayListFoundException, NoElementFoundException: void
+    - loadAlbums(): void
+    - loadPlaylists(): void
+    - loadElements(): void
+    + saveAlbums(): void
+    + savePlayLists(): void
+    + saveElements(): void
+
+    }
+
+    class NoAlbumFoundException{
+
+    + NoAlbumFoundException(var1: String)
+
+    }
+
+    class NoElementFoundException{
+
+    + NoElementFoundException(var1: String)
+
+    }
+
+    class NoPlayListFoundException{
+
+    + NoPlayListFoundException(var1: String)
+
+    }
+
+    class PlayList{
+
+    - title: String
+    - uuid: UUID
+    - elementUUIDs: ArrayList<UUID>
+
+    + PlayList(var1: String, var2: String, var3: ArrayList<UUID>)
+    + PlayList(var1: String)
+    + addElement(var1: UUID): void
+    + getElements(): ArrayList<UUID>
+    + getTitle(): String
+    + PlayList(var1: Element) throws Exception
+    + createXMLElement(var1: Document, var2: Element): void
+
+    }
+
+    class Song{
+
+    - genre: Genre
+
+    + Song(var1: String, var2: String, var3: int,
+    var4: String, var5: String, var6: String)
+    + Song(var1: String, var2: String, var3: int,
+    var4: String, var5: String)
+    + Song(var1: Element) throwd Exception
+    + getGenre(): String
+    + toString(): String
+    createXMLElement(var1: Document, var2: Element): void
+
+    }
+
+    class SortByAuthor{
+
+    SortByAuthor()
+    + int compare(var1: AudioElement, var2: AudioElement)
+
+    }
+
+    class SortByDate{
+
+    SortByDate()
+    + int compare(var1: Album, var2: Album)
+
+    }
+
+    class SortByGenre{
+
+    SortByGenre()
+    + int compare(var1:Song, var2:Song)
+
+    }
+
+    interface java.lang.Comparator
+
+    class java.lang.Exception
+
+
+    java.lang.Exception <|-- Album
+    java.lang.Exception <|-- AudioBook
+    java.lang.Exception <|-- AudioElement
+    java.lang.Exception <|-- NoAlbumFoundException
+    java.lang.Exception <|-- NoElementFoundException
+    java.lang.Exception <|-- NoPlayListFoundException
+    AudioElement <|--- AudioBook
+    AudioElement <|--- Song
+
+    NoAlbumFoundException <|-- MusicHub
+    NoElementFoundException <|-- MusicHub
+    NoPlayListFoundException <|-- MusicHub
+
+    java.lang.Comparator <|.. SortByAuthor
+    java.lang.Comparator <|.. SortByDate
+    java.lang.Comparator <|.. SortByGenre
+
+    Genre "1" - Song
+    Language "1" - AudioBook
+    Category "1" - AudioBook
+
+}
+@enduml
