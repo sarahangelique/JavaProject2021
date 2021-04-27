@@ -10,7 +10,7 @@ public class Main
 {
  	public static void main (String[] args) {
 
-		MusicHub theHub = new MusicHub ();
+		MusicHub theHub = new MusicHub ();	//Contains the playlist / audiobook or song / album
 		
 		System.out.println("Type h for available commands");
 		
