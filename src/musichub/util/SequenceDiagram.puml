@@ -1,15 +1,100 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
+actor user as Foo
+loop
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+/'The alternative combination fragment is used when a choice needs to be made between two or more message sequences.
+It models the “if then else” logic.'/
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+    alt input = t
+        group Display album titles ordered by Date
+            Foo -> Server: Select an album
+            activate Server
+            Server -> Server: Sort by Date
+            Server --> Foo: Display songs in album
+            deactivate Server
+        end
+    else input = g
+        group Display album titles ordered by Genre
+            Foo -> Server: Select an album
+            activate Server
+            Server -> Server: Sort by Genre
+            Server --> Foo: Display songs in album
+            deactivate Server
+        end
+    else input = d
+        group Display songs
+            Foo -> Server: Select an album
+            activate Server
+            Server --> Foo: Display songs in album
+            deactivate Server
+        end
+    else input = u
+        group Display audiobooks ordered by author
+            Foo -> Server: Select an album
+            activate Server
+            Server --> Foo: Display songs in album
+            deactivate Server
+        end
+    else input = c
+        group Add a new song
+            Foo -> Server: Select a song
+            activate Server
+            Server --> Foo: Add it to playlist
+            deactivate Server
+        end
+    else input = a
+        group Add a new album
+            Foo -> Server: Select an album
+            activate Server
+            Server --> Foo: Add it to playlist
+            deactivate Server
+        end
+    else input = +
+        group Add a new song to an album
+            Foo -> Server: Select a song
+            activate Server
+            Server --> Foo: Add song to the album
+            deactivate Server
+        end
+    else input = l
+        group Add a new audiobook
+            Foo -> Server: Select an audiobook
+            activate Server
+            Server --> Foo: Add it to playlist
+            deactivate Server
+        end
+    else input = p
+        loop
+            ref over Foo, Server: Add a new song
+            ref over Foo, Server: Add a new album
+            ref over Foo, Server: Add a new audiobook
+        end
+    else input = -
+        group Delete an existing playlist
+            Foo -> Server: Select a playlist
+            activate Server
+            Server -> Server: Iterate through playlist and delete
+            Server --> Foo: Display validation message
+            deactivate Server
+        end
+    else input = s
+        group Save elements, albums, playlists
+            Foo -> Server: Select element, album or playlist
+            activate Server
+            Server --> Foo: Saved
+            deactivate Server
+        end
 
-    loop
-        Alice -> Bob: add a song
+end
+    else input = q
+        group Quit
+            Foo -> Server: Close desktop application
+            activate Server
+            Server --> Foo: Display exit message
+            deactivate Server
     end
+
+
 @enduml
