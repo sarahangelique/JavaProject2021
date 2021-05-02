@@ -1,0 +1,1 @@
+javac -d bin src\musichub_user\business\*.java src\musichub_user\util\*.java src\musichub_user\main\*.java -encoding UTF-8
