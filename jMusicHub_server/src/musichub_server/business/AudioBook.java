@@ -3,6 +3,7 @@ package musichub_server.business;
 import java.io.*;
 import org.w3c.dom.*;
 
+
 public class AudioBook extends AudioElement {
 	private Language language;
 	private Category category;
@@ -79,11 +80,9 @@ public class AudioBook extends AudioElement {
 		}
 	}
 	
-	
 	public String toString() {
 		return super.toString() + ", Language = " + getLanguage() + ", Category = " + getCategory() + "\n";
 	}
-	
 
 	public void createXMLElement(Document document, Element parentElement) {
 		// audiobook element

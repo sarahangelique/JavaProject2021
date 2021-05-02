@@ -3,6 +3,7 @@ package musichub_server.business;
 import java.util.*;
 import org.w3c.dom.*;
 
+
 public class PlayList {
 	private String title;
 	private UUID uuid;
@@ -55,7 +56,6 @@ public class PlayList {
 		
 			this.elementUUIDs = new ArrayList<UUID>();
 			
-			
 			for (int i = 0; i < elementUUIDNodes.getLength(); i++) {
 				if (elementUUIDNodes.item(i).getNodeType() == Node.ELEMENT_NODE)   {
 					Element elementElement = (Element) elementUUIDNodes.item(i);
@@ -73,7 +73,6 @@ public class PlayList {
 		}
 	}
 	
-	
 	public void createXMLElement(Document document, Element parentElement)
 	{
 		Element playlistElement = document.createElement("playlist");
@@ -87,7 +86,6 @@ public class PlayList {
         UUIDElement.appendChild(document.createTextNode(uuid.toString()));
         playlistElement.appendChild(UUIDElement);
 
-		
 		Element elementsElement = document.createElement("elements");
 		for (Iterator<UUID> elementUUIDIter = this.elementUUIDs.listIterator(); elementUUIDIter.hasNext();) {
 			

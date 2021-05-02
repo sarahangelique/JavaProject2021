@@ -5,7 +5,6 @@ import org.w3c.dom.*;
 import java.text.*;
 
 
-
 public class Album {
 	private String title;
 	private String artist;
@@ -82,8 +81,7 @@ public class Album {
 			throw ex;
 		}
 	}
-	
-	
+
 	public void addSong (UUID song)
 	{
 		songsUIDs.add(song);

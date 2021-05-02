@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.File;
 
 
-
 public class XMLHandler {
 	TransformerFactory transformerFactory;
 	Transformer transformer;
@@ -31,8 +30,7 @@ public class XMLHandler {
         }
 	}
 	
-	public void createXMLFile(Document document, String filePath)
-	{
+	public void createXMLFile(Document document, String filePath) {
 		try {
 		// create the xml file
         //transform the DOM Object to an XML File
@@ -51,8 +49,7 @@ public class XMLHandler {
         }
 	}
 	
-	public Document createXMLDocument()
-	{
+	public Document createXMLDocument() {
 		return documentBuilder.newDocument();
 	}		
 	
@@ -74,7 +71,30 @@ public class XMLHandler {
 		}
 		return elementNodes;
 	}
-	
-	
+
+	public String searchSongInXMLFile (String songToPlay) {
+		NodeList nodes = this.parseXMLFile(XML_INPUT_FILE);
+		if (nodes == null) return "null";
+
+		System.out.println("The song I want to listen is: " + songToPlay);
+
+		for (int i = 0; i<nodes.getLength(); i++) {
+			if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+				Element currentElement = (Element) nodes.item(i);
+				if (currentElement.getNodeName().equals("song")) {
+					if(currentElement.getElementsByTagName("title").item(0).getTextContent().equals(songToPlay)){
+						try {
+							String content = currentElement.getElementsByTagName("content").item(0).getTextContent();
+							System.out.println(content);
+							return content;
+						} catch (Exception ex) {
+							System.out.println("Something is wrong with the XML song element");
+						}
+					}
+				}
+			}
+		}
+		return "Not such song in the data base!";
+	}
 
 }

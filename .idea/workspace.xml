@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4a4ece0-6209-4bae-acd5-8af75b1f8c52" name="Default Changelist" comment="Organised" />
+    <list default="true" id="c4a4ece0-6209-4bae-acd5-8af75b1f8c52" name="Default Changelist" comment="Organised">
+      <change afterPath="$PROJECT_DIR$/doc/constraint_stories" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AbstractServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/FirstServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jMusicHub_user/src/musichub_user/business/ClientConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jMusicHub_user/src/musichub_user/business/SimpleClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jMusicHub_user/src/musichub_user/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/Constraint stories.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/UML_Component diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/doc/UML_component.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/UML_usecase.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/doc/UML_usecase.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Album.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/MusicHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/MusicHub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/PlayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/PlayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/util/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/util/XMLHandler.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Project/jMusicHub_server" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1rqlq8FqM17mm2LYfZFwN5TPkcB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -23,7 +43,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -31,13 +51,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -56,6 +78,7 @@
       <workItem from="1619789205610" duration="75000" />
       <workItem from="1619961567554" duration="751000" />
       <workItem from="1619974228109" duration="1115000" />
+      <workItem from="1619976120850" duration="3503000" />
     </task>
     <task id="LOCAL-00001" summary="From S1">
       <created>1619713439767</created>

@@ -4,22 +4,19 @@ import java.util.*;
 import musichub_server.util.*;
 import org.w3c.dom.*;
 
-class SortByDate implements Comparator<Album>
-{
+class SortByDate implements Comparator<Album> {
 	public int compare(Album a1, Album a2) {
 			return a1.getDate().compareTo(a2.getDate());
 	} 
 }
 
-class SortByGenre implements Comparator<Song>
-{
+class SortByGenre implements Comparator<Song> {
 	public int compare(Song s1, Song s2) {
 			return s1.getGenre().compareTo(s2.getGenre());
 	} 
 }
 
-class SortByAuthor implements Comparator<AudioElement>
-{
+class SortByAuthor implements Comparator<AudioElement> {
 	public int compare(AudioElement e1, AudioElement e2) {
 			return e1.getArtist().compareTo(e2.getArtist());
 	} 
@@ -59,7 +56,6 @@ public class MusicHub {
 	}
 	
 	public void deletePlayList(String playListTitle) throws NoPlayListFoundException {
-		
 		PlayList thePlayList = null;
 		boolean result = false;
 		for (PlayList pl : playlists) {
@@ -147,12 +143,10 @@ public class MusicHub {
 				}
 			}
 		Collections.sort(songsInAlbum, new SortByGenre());
-		return songsInAlbum;		
-		
+		return songsInAlbum;
 	}
 
-	public void addElementToAlbum(String elementTitle, String albumTitle) throws NoAlbumFoundException, NoElementFoundException
-	{
+	public void addElementToAlbum(String elementTitle, String albumTitle) throws NoAlbumFoundException, NoElementFoundException {
 		Album theAlbum = null;
 		int i = 0;
 		boolean found = false; 
@@ -180,11 +174,9 @@ public class MusicHub {
             else throw new NoElementFoundException("Element " + elementTitle + " not found!");
 		}
 		else throw new NoAlbumFoundException("Album " + albumTitle + " not found!");
-		
 	}
 	
-	public void addElementToPlayList(String elementTitle, String playListTitle) throws NoPlayListFoundException, NoElementFoundException
-	{
+	public void addElementToPlayList(String elementTitle, String playListTitle) throws NoPlayListFoundException, NoElementFoundException {
 		PlayList thePlaylist = null;
         int i = 0;
 		boolean found = false; 
@@ -213,7 +205,6 @@ public class MusicHub {
             else throw new NoElementFoundException("Element " + elementTitle + " not found!");
 			
 		} else throw new NoPlayListFoundException("Playlist " + playListTitle + " not found!");
-		
 	}
 	
 	private void loadAlbums () {
