@@ -1,1 +1,0 @@
-java -classpath bin musichub_user.main.Main
