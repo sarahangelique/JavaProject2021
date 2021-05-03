@@ -3,37 +3,66 @@ package musichub_server.business;
 import java.util.*;
 import org.w3c.dom.*;
 
-
+/**
+ *
+ */
 public class PlayList {
 	private String title;
 	private UUID uuid;
 	private ArrayList<UUID> elementUUIDs;
 
+	/**
+	 *constructor to create a playlist
+	 * @param title
+	 * @param id
+	 * @param elementUUIDs
+	 */
 	public PlayList (String title, String id, ArrayList<UUID> elementUUIDs) {
 		this.title = title;
 		this.uuid = UUID.fromString(id);
 		this.elementUUIDs = elementUUIDs;
 	}
-	
+
+	/**
+	 *creates the playlist, with a title and an UUID
+	 * @param title
+	 */
 	public PlayList (String title) {
 		this.title = title;
 		this.uuid = UUID.randomUUID();
 		this.elementUUIDs = new ArrayList<UUID>();
 	}
-	
+
+	/**
+	 *creates the element playlist
+	 * @param element
+	 */
 	public void addElement (UUID element)
 	{
 		elementUUIDs.add(element);
 	}
-	
+
+	/**
+	 *returns the playlist
+	 * @return
+	 */
 	public ArrayList<UUID> getElements() {
 		return elementUUIDs;
 	}
-	
+
+	/**
+	 *returns the title of the playlist
+	 * @return
+	 */
 	public String getTitle() {
 		return title;
 	}
-	
+
+	/**
+	 *
+	 * @param xmlElement
+	 * @throws Exception
+	 */
 	public PlayList (Element xmlElement) throws Exception {
 		try {
 			this.title = xmlElement.getElementsByTagName("title").item(0).getTextContent();
@@ -72,7 +101,12 @@ public class PlayList {
 			throw ex;
 		}
 	}
-	
+
+	/**
+	 *
+	 * @param document
+	 * @param parentElement
+	 */
 	public void createXMLElement(Document document, Element parentElement) {
 		Element playlistElement = document.createElement("playlist");
 		parentElement.appendChild(playlistElement);

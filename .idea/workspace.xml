@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4a4ece0-6209-4bae-acd5-8af75b1f8c52" name="Default Changelist" comment="modifications">
-      <change afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/util/ClassDiagram.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/util/SequenceDiagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Language.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/MusicHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/MusicHub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/NoAlbumFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/NoAlbumFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/NoElementFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/NoElementFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/NoPlayListFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/NoPlayListFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/PlayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/PlayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

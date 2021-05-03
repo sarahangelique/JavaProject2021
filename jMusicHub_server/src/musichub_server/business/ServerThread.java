@@ -16,13 +16,23 @@ public class ServerThread extends Thread {
     private ObjectOutputStream output;
     private XMLHandler xmlHandler;
 
+    /**
+     *
+     */
     public static final String DIR = System.getProperty("user.dir");
     public static final String path = DIR + "\\files\\xml\\elements.xml";
 
+    /**
+     *
+     * @param socket
+     */
     public ServerThread(Socket socket) {
         this.socket = socket;
     }
 
+    /**
+     *
+     */
     public void run() {
         MusicHub theHub = new MusicHub ();
 
@@ -77,6 +87,10 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     *
+     * @param theHub
+     */
     public void commandT(MusicHub theHub) {
         try{
             System.out.println(theHub.getAlbumsTitlesSortedByDate());
@@ -88,6 +102,11 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     *
+     * @param theHub
+     * @param albumTitle
+     */
     public void commandG(MusicHub theHub, String albumTitle) {
         try{
             try {
@@ -103,6 +122,11 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     *
+     * @param theHub
+     * @param albumTitle
+     */
     public void commandD(MusicHub theHub, String albumTitle) {
         try{
             try {
@@ -118,6 +142,10 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     *
+     * @param theHub
+     */
     public void commandU(MusicHub theHub) {
         try{
             System.out.println(theHub.getAudiobooksTitlesSortedByAuthor());
@@ -129,6 +157,11 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     *
+     * @param theHub
+     * @param songTitle
+     */
     public void commandC(MusicHub theHub, String songTitle) {
         try{
             xmlHandler = new XMLHandler();
