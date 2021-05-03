@@ -5,8 +5,17 @@ import java.util.*;
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
 import java.io.BufferedOutputStream;
-	
+
+
+/**
+ * Main class, the server interface
+ */
 public class Main {
+
+	/**
+	 * The main, server side.
+	 * @param args : args
+	 */
  	public static void main (String[] args) {
 		AbstractServer as = new FirstServer();
 		String ip = "localhost";
@@ -239,7 +248,10 @@ public class Main {
 		}
 		scan.close();
 	}
-	
+
+	/**
+	 * printAvailableCommands print all the available commands for the administrator.
+	 */
 	private static void printAvailableCommands() {
 		System.out.println("t: display the album titles, ordered by date");
 		System.out.println("g: display songs of an album, ordered by genre");
