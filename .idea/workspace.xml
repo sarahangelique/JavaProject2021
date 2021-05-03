@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c4a4ece0-6209-4bae-acd5-8af75b1f8c52" name="Default Changelist" comment="modifications">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_client/src/musichub_client/business/PlayMusic.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jMusicHub_client/src/musichub_client/business/SimpleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_client/src/musichub_client/business/SimpleClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jMusicHub_client/src/musichub_client/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_client/src/musichub_client/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/bin/musichub_server/business/AudioElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/bin/musichub_server/business/AudioElement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/bin/musichub_server/business/MusicHub.class" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/bin/musichub_server/business/MusicHub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/files/xml/elements.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/files/xml/elements.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/AudioElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/MusicHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/MusicHub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/jMusicHub_server/src/musichub_server/business/ServerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +67,7 @@
       <workItem from="1619961567554" duration="751000" />
       <workItem from="1619974228109" duration="1115000" />
       <workItem from="1619976120850" duration="12295000" />
-      <workItem from="1620038288748" duration="30739000" />
+      <workItem from="1620038288748" duration="32308000" />
     </task>
     <task id="LOCAL-00001" summary="From S1">
       <created>1619713439767</created>
@@ -139,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620064753392</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Final">
+      <created>1620076764050</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1620076764050</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +163,8 @@
     <MESSAGE value="Sockets added" />
     <MESSAGE value="modifications" />
     <MESSAGE value="client-server interface in construction" />
-    <option name="LAST_COMMIT_MESSAGE" value="client-server interface in construction" />
+    <MESSAGE value="Final" />
+    <MESSAGE value="Comments added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments added" />
   </component>
 </project>
