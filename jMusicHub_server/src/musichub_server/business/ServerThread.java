@@ -12,7 +12,7 @@ public class ServerThread extends Thread {
     private Socket socket;
     private ObjectInputStream input;
     private ObjectOutputStream output;
-    private Xml demo;
+    private XMLHandler demo;
 
     public ServerThread(Socket socket) {
         this.socket = socket;
@@ -30,8 +30,8 @@ public class ServerThread extends Thread {
             System.out.println("Server received a command: " + text + song);
 
             //Xml demo = new Xml();
-            demo = new Xml();
-            String songContent = demo.readXML(song);
+            demo = new XMLHandler();
+            String songContent = demo.searchSongInXMLFile(song);
 
             //String songContent = "something.wav";
             output.writeObject(songContent);		//serialize and write the Student object to the stream

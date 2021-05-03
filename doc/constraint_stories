@@ -11,7 +11,7 @@ CS 1.4 (Interoperability)
 The system shall be written in Java.
 
 CS 1.5 (Interoperability)
-The client should be able to add new audio files in the data system.
+The administrator should be able to add new audio files in the data system, on the server side.
 
 CS 1.6 (Interoperability)
 All configuration data shall be stored in XML files.

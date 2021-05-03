@@ -1,4 +1,4 @@
-package musichub_user.business;
+package musichub_client.business;
 
 import java.io.*;
 import java.net.*;
@@ -6,7 +6,6 @@ import java.util.*;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import java.io.File;
 
 
 public class SimpleClient {
@@ -14,6 +13,8 @@ public class SimpleClient {
     private ObjectOutputStream output;
     private ObjectInputStream input;
     private Socket socket;
+
+    public static final String WAV_FILE_PATH = "..\\..\\..\\..\\jMusicHub_server\\files\\wav\\";
 
     public void connect(String ip)
     {
@@ -37,9 +38,7 @@ public class SimpleClient {
             String audioContent = (String) input.readObject();	//deserialize and read the Student object from the stream
             System.out.println("Play music from database");
             try{
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("..\\INF3133\\JavaProject\\jMusicHub_ExampleImplementation\\files\\" + audioContent).getAbsoluteFile());
-                //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Audio\\" + audioContent).getAbsoluteFile());
-
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(WAV_FILE_PATH + audioContent).getAbsoluteFile());
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
                 clip.start();

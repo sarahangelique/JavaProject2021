@@ -6,8 +6,7 @@ import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
 import java.io.BufferedOutputStream;
 	
-public class Main
-{
+public class Main {
  	public static void main (String[] args) {
 
 		MusicHub theHub = new MusicHub ();
