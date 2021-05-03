@@ -3,8 +3,15 @@ package musichub_client.main;
 import musichub_client.business.*;
 import java.util.*;
 
-
+/**
+ * Main class, the client interface
+ */
 public class Main{
+
+    /**
+     * The main, display the messages, display the menu, read the user's commands.
+     * @param args : args
+     */
     public static void main (String[] args) {
         SimpleClient c1 = new SimpleClient();
         //c1.connect("localhost");
@@ -80,6 +87,9 @@ public class Main{
         scan.close();
     }
 
+    /**
+     * printAvailableCommands print all the available commands for the user.
+     */
     private static void printAvailableCommands() {
         System.out.println("t: display the album titles, ordered by date");
         System.out.println("g: display songs of an album, ordered by genre");

@@ -8,6 +8,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 
+/**
+ * SinpleClient class, it is a client that can ask the connection to the server and communicate with it.
+ */
 public class SimpleClient {
 
     private ObjectOutputStream output;
@@ -17,6 +20,12 @@ public class SimpleClient {
     public static final String DIR = System.getProperty("user.dir");
     public static final String path = DIR + "\\..\\jMusicHub_server\\files\\wav\\";
 
+    /**
+     * This method that allow to ask the connection to the server and send a command.
+     *
+     * @param ip : the ip of the client
+     * @param command : the command of the user
+     */
     public void connection(String ip, String command){
         // album titles, ordered by date
         Scanner scan = new Scanner(System.in);
@@ -68,6 +77,13 @@ public class SimpleClient {
         }
     }
 
+    /**
+     * This method that allow to ask the connection to the server, send a command and send a title to research.
+     *
+     * @param ip : the ip of the client
+     * @param title : the title of somethin (Album, Playlist, Song)
+     * @param command : the command of the user
+     */
     public void connection(String ip, String title, String command) {
         // songs of an album, sorted by genre
         Scanner scan = new Scanner(System.in);
@@ -131,6 +147,12 @@ public class SimpleClient {
         }
     }
 
+    /**
+     * To play a song.
+     *
+     * @param path : path to the song file.
+     * @param audioContent : content of the song file
+     */
     public void play(String path, String audioContent){
         System.out.println("Play music... " + audioContent);
         try{
