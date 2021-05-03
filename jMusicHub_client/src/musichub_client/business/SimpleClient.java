@@ -13,11 +13,11 @@ public class SimpleClient {
     private ObjectOutputStream output;
     private ObjectInputStream input;
     private Socket socket;
-    private PlayMusic playMusic;
 
-    public static final String WAV_FILE_PATH = "..\\..\\..\\..\\jMusicHub_server\\files\\wav\\";
+    public static final String DIR = System.getProperty("user.dir");
+    public static final String path = DIR + "\\..\\jMusicHub_server\\files\\wav\\";
 
-    public void getAlbumsTitlesSortedByDate(String ip) {
+    public void connection(String ip, String command){
         // album titles, ordered by date
         Scanner scan = new Scanner(System.in);
         int port = 6666;
@@ -28,11 +28,22 @@ public class SimpleClient {
             //create the streams that will handle the objects coming and going through the sockets
             output = new ObjectOutputStream(socket.getOutputStream());
             input = new ObjectInputStream(socket.getInputStream());
+            String textToSend = new String();
 
-            String textToSend = new String("Display album titles, ordered by date. ");
-            String commandToSend = new String("t");
-            output.writeObject(textToSend);
-            output.writeObject(commandToSend);
+            switch (command.charAt(0)){
+                case 't':
+                    textToSend = "Display album titles, ordered by date. ";
+                    output.writeObject(textToSend);
+                    output.writeObject(command);
+                break;
+                case 'u':
+                    textToSend = "Display udiobooks, ordered by author. ";
+                    output.writeObject(textToSend);
+                    output.writeObject(command);
+                break;
+                default:
+                break;
+            }
 
             String fromServer = (String) input.readObject();
             System.out.println(fromServer);
@@ -57,7 +68,7 @@ public class SimpleClient {
         }
     }
 
-    public void getAlbumSongsSortedByGenre(String ip, String albumTitle) {
+    public void connection(String ip, String title, String command) {
         // songs of an album, sorted by genre
         Scanner scan = new Scanner(System.in);
         int port = 6666;
@@ -68,102 +79,36 @@ public class SimpleClient {
             //create the streams that will handle the objects coming and going through the sockets
             output = new ObjectOutputStream(socket.getOutputStream());
             input = new ObjectInputStream(socket.getInputStream());
+            String textToSend = new String();
+            String fromServer = new String();
 
-            String textToSend = new String("Display songs of the album " +albumTitle+ " sorted by genre. ");
-            String commandToSend = new String("g");
-            output.writeObject(textToSend);
-            output.writeObject(commandToSend);
-            output.writeObject(albumTitle);
-
-            String fromServer = (String) input.readObject();
-            System.out.println(fromServer);
-
-        } catch  (UnknownHostException uhe) {
-            uhe.printStackTrace();
-        }
-        catch  (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        catch  (ClassNotFoundException cnfe) {
-            cnfe.printStackTrace();
-        }
-        finally {
-            try {
-                input.close();
-                output.close();
-                socket.close();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-    }
-/*
-    public void commandH(String ip){
-        // play a song
-        Scanner scan = new Scanner(System.in);
-        int port = 6666;
-        try  {
-            //create the socket; it is defined by an remote IP address (the address of the server) and a port number
-            socket = new Socket(ip, port);
-
-            //create the streams that will handle the objects coming and going through the sockets
-            output = new ObjectOutputStream(socket.getOutputStream());
-            input = new ObjectInputStream(socket.getInputStream());
-
-            System.out.println("Command sent to the server: h");
-            output.writeObject('h');		//serialize and write the String to the stream
-
-            String audioContent = (String) input.readObject();	//deserialize and read the Student object from the stream
-            playMusic.play(WAV_FILE_PATH, audioContent);
-        } catch (UnknownHostException uhe) {
-            uhe.printStackTrace();
-        }
-        catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        catch (ClassNotFoundException cnfe) {
-            cnfe.printStackTrace();
-        }
-        finally {
-            try {
-                input.close();
-                output.close();
-                socket.close();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-    }
-
-    public void connect(String ip) {
-    //Play a song
-        Scanner scan = new Scanner(System.in);
-        int port = 6666;
-        try  {
-            //create the socket; it is defined by an remote IP address (the address of the server) and a port number
-            socket = new Socket(ip, port);
-
-            //create the streams that will handle the objects coming and going through the sockets
-            output = new ObjectOutputStream(socket.getOutputStream());
-            input = new ObjectInputStream(socket.getInputStream());
-
-            String textToSend = new String("Play the song: ");
-            System.out.println("Enter the song title: ");
-            String songToPlay = scan.nextLine();
-            System.out.println("Command sent to the server: " + textToSend + songToPlay);
-            output.writeObject(textToSend);		//serialize and write the String to the stream
-            output.writeObject(songToPlay);		//serialize and write the String to the stream
-
-            String audioContent = (String) input.readObject();	//deserialize and read the Student object from the stream
-            System.out.println("Play music from database");
-            try{
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(WAV_FILE_PATH + audioContent).getAbsoluteFile());
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-                clip.start();
-                Thread.sleep(20000);
-            } catch (Exception ex){
-                System.out.println("Error with playing sound.");
+            switch (command.charAt(0)){
+                case 'g':
+                    textToSend = "Display songs of the album " +title+ " sorted by genre. ";
+                    output.writeObject(textToSend);
+                    output.writeObject(command);
+                    output.writeObject(title);
+                    fromServer = (String) input.readObject();
+                    System.out.println(fromServer);
+                break;
+                case 'd':
+                    textToSend = "Display songs of the album " +title+ ". ";
+                    output.writeObject(textToSend);
+                    output.writeObject(command);
+                    output.writeObject(title);
+                    fromServer = (String) input.readObject();
+                    System.out.println(fromServer);
+                break;
+                case 'c':
+                    textToSend = "Play the song " +title+ ". ";
+                    output.writeObject(textToSend);
+                    output.writeObject(command);
+                    output.writeObject(title);
+                    fromServer = (String) input.readObject();
+                    play(path, fromServer);
+                break;
+                default:
+                break;
             }
 
         } catch  (UnknownHostException uhe) {
@@ -185,5 +130,18 @@ public class SimpleClient {
             }
         }
     }
-*/
+
+    public void play(String path, String audioContent){
+        System.out.println("Play music... " + audioContent);
+        try{
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path + audioContent).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+            Thread.sleep(20000);
+        } catch (Exception ex){
+            System.out.println("Error with playing sound.");
+        }
+    }
+
 }

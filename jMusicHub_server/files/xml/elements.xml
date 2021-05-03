@@ -5,7 +5,7 @@
 		<artist>The Beatles</artist>
 		<length>186</length>
 		<UUID>66d277ca-cbc4-471c-a07e-082362275bcc</UUID>
-		<content>here_comes_the_sun.mp3</content>
+		<content>here_comes_the_sun.wav</content>
 		<genre>pop</genre>
 	</song>
 	<song>
@@ -13,7 +13,7 @@
 		<artist>The Beatles</artist>
 		<length>186</length>
 		<UUID>66d277ca-cbc4-471c-a07e-082363375bcc</UUID>
-		<content>i_want_to_hold_your_hand.mp3</content>
+		<content>i_want_to_hold_your_hand.wav</content>
 		<genre>rock</genre>
 	</song>
 	<song>
@@ -29,7 +29,7 @@
 		<artist>Jason Kruppa</artist>
 		<length>1640</length>
 		<UUID>9a744375-95cb-4f25-8dfd-f488e0f2e1f1</UUID>
-		<content>producing_the_beatles.mp3</content>
+		<content>producing_the_beatles.wav</content>
 		<language>english</language>
 		<category>documentary</category>
 	</audiobook>
@@ -38,7 +38,7 @@
 		<artist>Disney</artist>
 		<length>999</length>
 		<UUID>c88c33dc-6c56-42d5-8381-202c679558e4</UUID>
-		<content>name.mp3</content>
+		<content>name.wav</content>
 		<language>english</language>
 		<category>youth</category>
 	</audiobook>
@@ -47,7 +47,7 @@
 		<artist>The Beatles</artist>
 		<length>176</length>
 		<UUID>b2ee0ca0-b5e2-4bc9-8fed-7932fb145f2f</UUID>
-		<content>julia.mp3</content>
+		<content>julia.wav</content>
 		<genre>pop</genre>
 	</song>
 	<audiobook>
@@ -55,7 +55,7 @@
 		<artist>Shakespeare</artist>
 		<length>10800</length>
 		<UUID>804d2dea-3e49-4c42-99f6-e195d3a68da7</UUID>
-		<content>hamlet.mp3</content>
+		<content>hamlet.wav</content>
 		<language>english</language>
 		<category>theater</category>
 	</audiobook>
@@ -64,7 +64,7 @@
 		<artist>The Beatles</artist>
 		<length>180</length>
 		<UUID>bbe99998-1be6-4a40-8bf0-6a7fce9087c9</UUID>
-		<content>yesterday.mp3</content>
+		<content>yesterday.wav</content>
 		<genre>pop</genre>
 	</song>
 	<song>
@@ -72,7 +72,7 @@
 		<artist>ABBA</artist>
 		<length>213</length>
 		<UUID>a9b8d71a-70af-4f6a-a908-ad09ec8345d3</UUID>
-		<content>mamma_mia.mp3</content>
+		<content>mamma_mia.wav</content>
 		<genre>pop</genre>
 	</song>
 	<song>
@@ -80,7 +80,7 @@
 		<artist>ABBA</artist>
 		<length>230</length>
 		<UUID>18c49fcc-3b6e-4743-884f-89274a8a2e9a</UUID>
-		<content>dancing_queen.mp3</content>
+		<content>dancing_queen.wav</content>
 		<genre>pop</genre>
 	</song>
 	<song>
@@ -88,7 +88,7 @@
 		<artist>ABBA</artist>
 		<length>252</length>
 		<UUID>44136020-dc80-4522-9b71-2b9aad5e3039</UUID>
-		<content>fernando.mp3</content>
+		<content>fernando.wav</content>
 		<genre>pop</genre>
 	</song>
 	<song>
@@ -96,7 +96,7 @@
 		<artist>ABBA</artist>
 		<length>291</length>
 		<UUID>a2a19231-d244-4440-ad2a-41315e5ca00a</UUID>
-		<content>the_name_of_the_game.mp3</content>
+		<content>the_name_of_the_game.wav</content>
 		<genre>pop</genre>
 	</song>
 	<song>
@@ -104,7 +104,7 @@
 		<artist>ABBA</artist>
 		<length>254</length>
 		<UUID>383c9337-6a58-40aa-ac4d-83fd964a397c</UUID>
-		<content>the_winner_takes_it_all.mp3</content>
+		<content>the_winner_takes_it_all.wav</content>
 		<genre>pop</genre>
 	</song>
 	<song>
@@ -112,7 +112,7 @@
 		<artist>IU</artist>
 		<length>201</length>
 		<UUID>f60ffc58-e16c-4963-8394-4a015b232dd2</UUID>
-		<content>ah_puh.mp3</content>
+		<content>ah_puh.wav</content>
 		<genre>pop</genre>
 	</song>
 	<audiobook>
@@ -120,7 +120,7 @@
 		<artist>Matthew Walker</artist>
 		<length>49920</length>
 		<UUID>217ab468-4aea-4f06-89d7-0bccc746ace5</UUID>
-		<content>why_we_sleep.mp3</content>
+		<content>why_we_sleep.wav</content>
 		<language>english</language>
 		<category>documentary</category>
 	</audiobook>

@@ -64,8 +64,7 @@ public abstract class AudioElement {
 		return "Title = " + this.title + ", Artist = " + this.artist + ", Length = " + this.lengthInSeconds + ", Content = " + this.content;
 	}
 
-	public void createXMLElement(Document document, Element parentElement)
-	{
+	public void createXMLElement(Document document, Element parentElement) {
 		Element nameElement = document.createElement("title");
         nameElement.appendChild(document.createTextNode(title));
         parentElement.appendChild(nameElement);

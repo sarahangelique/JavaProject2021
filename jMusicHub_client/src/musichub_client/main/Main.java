@@ -17,6 +17,7 @@ public class Main{
         String choice = scan.nextLine();
 
         String albumTitle = null;
+        String songTitle = null;
 
         if (choice.length() == 0) System.exit(0);
 
@@ -26,150 +27,51 @@ public class Main{
                     printAvailableCommands();
                     choice = scan.nextLine();
                 break;
+
                 case 't':
                     //album titles, ordered by date
-                    c1.getAlbumsTitlesSortedByDate("localhost");
+                    System.out.println("Album ordered by date: ");
+                    c1.connection("localhost", "t");
                     printAvailableCommands();
                     choice = scan.nextLine();
                 break;
+
                 case 'g':
                     //songs of an album, sorted by genre
                     System.out.println("Songs of an album sorted by genre will be displayed; enter the album name, available albums are:");
-                    c1.getAlbumsTitlesSortedByDate("localhost");
-
+                    c1.connection("localhost", "t");
                     albumTitle = scan.nextLine();
-                    c1.getAlbumSongsSortedByGenre("localhost", albumTitle);
-
+                    c1.connection("localhost", albumTitle, "g");
                     printAvailableCommands();
                     choice = scan.nextLine();
                 break;
 
-                /*
                 case 'd':
                     //songs of an album
                     System.out.println("Songs of an album will be displayed; enter the album name, available albums are:");
-                    System.out.println(theHub.getAlbumsTitlesSortedByDate());
-
+                    c1.connection("localhost", "t");
                     albumTitle = scan.nextLine();
-                    try {
-                        System.out.println(theHub.getAlbumSongs(albumTitle));
-                    } catch (NoAlbumFoundException ex) {
-                        System.out.println("No album found with the requested title " + ex.getMessage());
-                    }
+                    c1.connection("localhost", albumTitle, "d");
                     printAvailableCommands();
                     choice = scan.nextLine();
                 break;
+
                 case 'u':
                     //audiobooks ordered by author
-                    System.out.println(theHub.getAudiobooksTitlesSortedByAuthor());
+                    System.out.println("Audiobooks ordered by author: ");
+                    c1.connection("localhost", "u");
                     printAvailableCommands();
                     choice = scan.nextLine();
                 break;
+
                 case 'c':
                     // play a song
-                    System.out.println("Here is the list of available songs: ");
-                    // A COMPLETER: AFFICHER LA LISTE
-                    //
                     System.out.println("Please enter the title of the song you want to listen: ");
-                    String title = scan.nextLine();
-                    // A COMPLETER
-                    //
+                    songTitle = scan.nextLine();
+                    c1.connection("localhost", songTitle, "c");
                     printAvailableCommands();
                     choice = scan.nextLine();
                 break;
-                case 'a':
-                    // play the songs of an album
-                    System.out.println("Here is the list of available albums: ");
-                    // A COMPLETER: AFFICHER LA LISTE D'ALBUMS
-                    //
-                    System.out.println("Please enter the title of the album to play: ");
-                    String aTitle = scan.nextLine();
-                    // A COMPLETER
-                    //
-                    printAvailableCommands();
-                    choice = scan.nextLine();
-                break;
-
-//
-                case 'p':
-                    //play the song of a playlis
-                    System.out.println("Here is the list of available playlists: ");
-                    // A COMPLETER: AFFICHER LA LISTE DE PLAYLISTE
-                    //
-                    System.out.println("Please enter the title of the playlist to play: ");
-                    String aTitle = scan.nextLine();
-                    // A COMPLETER
-                    //
-                    printAvailableCommands();
-                    choice = scan.nextLine();
-                break;
-                case 'n':
-                    // create a new playlist from existing songs
-                    System.out.println("Add an existing song or audiobook to a new playlist");
-                    System.out.println("Existing playlists:");
-                    Iterator<PlayList> itpl = theHub.playlists();
-                    while (itpl.hasNext()) {
-                        PlayList pl = itpl.next();
-                        System.out.println(pl.getTitle());
-                    }
-
-                    System.out.println("Type the name of the playlist you wish to create:");
-                    String playListTitle = scan.nextLine();
-                    PlayList pl = new PlayList(playListTitle);
-                    theHub.addPlaylist(pl);
-
-                    System.out.println("Available elements: ");
-                    Iterator<AudioElement> itael = theHub.elements();
-                    while (itael.hasNext()) {
-                        AudioElement ae = itael.next();
-                        System.out.println(ae.getTitle());
-                    }
-                    while (choice.charAt(0)!= 'n') 	{
-                        System.out.println("Type the name of the audio element you wish to add or 'n' to exit:");
-                        String elementTitle = scan.nextLine();
-                        try {
-                            theHub.addElementToPlayList(elementTitle, playListTitle);
-                        } catch (NoPlayListFoundException ex) {
-                            System.out.println (ex.getMessage());
-                        } catch (NoElementFoundException ex) {
-                            System.out.println (ex.getMessage());
-                        }
-
-                        System.out.println("Type y to add a new one, n to end");
-                        choice = scan.nextLine();
-                    }
-                    System.out.println("Playlist created!");
-                    printAvailableCommands();
-                    choice = scan.nextLine();
-                break;
-                case '-':
-                    //delete a playlist
-                    System.out.println("Delete an existing playlist. Available playlists:");
-                    Iterator<PlayList> itp = theHub.playlists();
-                    while (itp.hasNext()) {
-                        PlayList p = itp.next();
-                        System.out.println(p.getTitle());
-                    }
-                    String plTitle = scan.nextLine();
-                    try {
-                        theHub.deletePlayList(plTitle);
-                    }	catch (NoPlayListFoundException ex) {
-                        System.out.println (ex.getMessage());
-                    }
-                    System.out.println("Playlist deleted!");
-                    printAvailableCommands();
-                    choice = scan.nextLine();
-                break;
-                case 's':
-                    //save playlists
-                    theHub.saveElements();
-                    theHub.saveAlbums();
-                    theHub.savePlayLists();
-                    System.out.println("Elements, albums and playlists saved!");
-                    printAvailableCommands();
-                    choice = scan.nextLine();
-                    break;
- */
 
                 default:
                 break;
@@ -183,15 +85,7 @@ public class Main{
         System.out.println("g: display songs of an album, ordered by genre");
         System.out.println("d: display songs of an album");
         System.out.println("u: display audiobooks ordered by author\n");
-
-        System.out.println("c: play a song");
-/*        System.out.println("a: play the songs of an album");
-        System.out.println("p: play the song of a playlist\n");
-
-        System.out.println("n: create a new playlist from existing songs");
-        System.out.println("-: delete an existing playlist");
-        System.out.println("s: save playlists\n");
-*/
+        System.out.println("c: play a song\n");
         System.out.println("q: quit program");
     }
 }

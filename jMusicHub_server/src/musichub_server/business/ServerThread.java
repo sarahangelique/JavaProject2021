@@ -16,6 +16,9 @@ public class ServerThread extends Thread {
     private ObjectOutputStream output;
     private XMLHandler xmlHandler;
 
+    public static final String DIR = System.getProperty("user.dir");
+    public static final String path = DIR + "\\files\\xml\\elements.xml";
+
     public ServerThread(Socket socket) {
         this.socket = socket;
     }
@@ -32,14 +35,26 @@ public class ServerThread extends Thread {
             String command = (String)input.readObject();
             System.out.println("Server received the command: " + command);
             System.out.println(textFromClient);
+            String title = new String();
 
             switch (command.charAt(0)){
                 case 't':
                     commandT(theHub);
                 break;
                 case 'g':
-                    String albumTitle = (String)input.readObject();
-                    commandG(theHub, albumTitle);
+                    title = (String)input.readObject();
+                    commandG(theHub, title);
+                break;
+                case 'd':
+                    title = (String)input.readObject();
+                    commandD(theHub, title);
+                break;
+                case 'u':
+                    commandU(theHub);
+                break;
+                case 'c':
+                    title = (String)input.readObject();
+                    commandC(theHub, title);
                 break;
                 default:
                 break;
@@ -87,13 +102,43 @@ public class ServerThread extends Thread {
             ex.printStackTrace();
         }
     }
-/*
-    public void songContent(){
-        xmlHandler = new XMLHandler();
-        String songContent = xmlHandler.searchSongInXMLFile(song);
 
-        //String songContent = "something.wav";
-        output.writeObject(songContent);
+    public void commandD(MusicHub theHub, String albumTitle) {
+        try{
+            try {
+                System.out.println(theHub.getAlbumSongs(albumTitle));
+                String toClient = theHub.getAlbumSongs_Title(albumTitle);
+                output.writeObject(toClient);
+            } catch (NoAlbumFoundException ex) {
+                System.out.println("No album found with the requested title " + ex.getMessage());
+            }
+        }catch (IOException ex) {
+            System.out.println("Server exception: " + ex.getMessage());
+            ex.printStackTrace();
+        }
     }
- */
+
+    public void commandU(MusicHub theHub) {
+        try{
+            System.out.println(theHub.getAudiobooksTitlesSortedByAuthor());
+            String toClient = theHub.getAudiobooksTitlesSortedByAuthor();
+            output.writeObject(toClient);
+        }catch (IOException ex) {
+            System.out.println("Server exception: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    public void commandC(MusicHub theHub, String songTitle) {
+        try{
+            xmlHandler = new XMLHandler();
+            String songContent = xmlHandler.searchSongInXMLFile(songTitle, path);
+            System.out.println(songTitle + " is playing.");
+            output.writeObject(songContent);
+        }catch (IOException ex) {
+            System.out.println("Server exception: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
 }
