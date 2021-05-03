@@ -8,21 +8,27 @@ import java.io.BufferedOutputStream;
 	
 public class Main {
  	public static void main (String[] args) {
+		AbstractServer as = new FirstServer();
+		String ip = "localhost";
 
 		MusicHub theHub = new MusicHub ();
-		
-		System.out.println("Type h for available commands");
-		
-		
+
+		System.out.println("WELCOME TO THE SERVER OF THE ESIEA MUSIC HUB APPLICATION !\n");
+		System.out.println("Type x to stay as a simple server.");
+		System.out.println("Type h for available commands.");
+
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
-		
+
 		String albumTitle = null;
 		
 		if (choice.length() == 0) System.exit(0);						
 		
 		while (choice.charAt(0)!= 'q') 	{
 			switch (choice.charAt(0)) 	{
+				case 'x':
+					as.connect(ip);
+				break;
 				case 'h':
 					printAvailableCommands();
 					choice = scan.nextLine();

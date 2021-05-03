@@ -106,8 +106,7 @@ public class Album {
 		return date;
 	}
 	
-	public void createXMLElement(Document document, Element parentElement)
-	{
+	public void createXMLElement(Document document, Element parentElement) {
 		Element albumElement = document.createElement("album");
 		parentElement.appendChild(albumElement);
 		

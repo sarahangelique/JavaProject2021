@@ -72,7 +72,7 @@ public class XMLHandler {
 		return elementNodes;
 	}
 
-	public String searchSongInXMLFile (String songToPlay) {
+	public String searchSongInXMLFile (String songToPlay, String XML_INPUT_FILE) {
 		NodeList nodes = this.parseXMLFile(XML_INPUT_FILE);
 		if (nodes == null) return "null";
 

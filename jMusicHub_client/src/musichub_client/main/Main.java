@@ -1,10 +1,13 @@
 package musichub_client.main;
+
 import musichub_client.business.*;
+import java.util.*;
+
 
 public class Main{
     public static void main (String[] args) {
         SimpleClient c1 = new SimpleClient();
-        c1.connect("localhost");
+        //c1.connect("localhost");
 
         System.out.println("WELCOME TO THE ESIEA MUSIC HUB APPLICATION ! ! !\n");
         System.out.println("Here are the available commands: \n");
@@ -22,27 +25,26 @@ public class Main{
                 case 'h':
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case 't':
                     //album titles, ordered by date
-                    System.out.println(theHub.getAlbumsTitlesSortedByDate());
+                    c1.getAlbumsTitlesSortedByDate("localhost");
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case 'g':
                     //songs of an album, sorted by genre
                     System.out.println("Songs of an album sorted by genre will be displayed; enter the album name, available albums are:");
-                    System.out.println(theHub.getAlbumsTitlesSortedByDate());
+                    c1.getAlbumsTitlesSortedByDate("localhost");
 
                     albumTitle = scan.nextLine();
-                    try {
-                        System.out.println(theHub.getAlbumSongsSortedByGenre(albumTitle));
-                    } catch (NoAlbumFoundException ex) {
-                        System.out.println("No album found with the requested title " + ex.getMessage());
-                    }
+                    c1.getAlbumSongsSortedByGenre("localhost", albumTitle);
+
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
+
+                /*
                 case 'd':
                     //songs of an album
                     System.out.println("Songs of an album will be displayed; enter the album name, available albums are:");
@@ -56,13 +58,13 @@ public class Main{
                     }
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case 'u':
                     //audiobooks ordered by author
                     System.out.println(theHub.getAudiobooksTitlesSortedByAuthor());
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case 'c':
                     // play a song
                     System.out.println("Here is the list of available songs: ");
@@ -74,7 +76,7 @@ public class Main{
                     //
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case 'a':
                     // play the songs of an album
                     System.out.println("Here is the list of available albums: ");
@@ -86,8 +88,9 @@ public class Main{
                     //
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
-/*
+                break;
+
+//
                 case 'p':
                     //play the song of a playlis
                     System.out.println("Here is the list of available playlists: ");
@@ -99,7 +102,7 @@ public class Main{
                     //
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case 'n':
                     // create a new playlist from existing songs
                     System.out.println("Add an existing song or audiobook to a new playlist");
@@ -138,7 +141,7 @@ public class Main{
                     System.out.println("Playlist created!");
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case '-':
                     //delete a playlist
                     System.out.println("Delete an existing playlist. Available playlists:");
@@ -156,7 +159,7 @@ public class Main{
                     System.out.println("Playlist deleted!");
                     printAvailableCommands();
                     choice = scan.nextLine();
-                    break;
+                break;
                 case 's':
                     //save playlists
                     theHub.saveElements();
@@ -167,8 +170,9 @@ public class Main{
                     choice = scan.nextLine();
                     break;
  */
+
                 default:
-                    break;
+                break;
             }
         }
         scan.close();

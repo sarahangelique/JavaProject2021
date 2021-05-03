@@ -73,8 +73,7 @@ public class PlayList {
 		}
 	}
 	
-	public void createXMLElement(Document document, Element parentElement)
-	{
+	public void createXMLElement(Document document, Element parentElement) {
 		Element playlistElement = document.createElement("playlist");
 		parentElement.appendChild(playlistElement);
 		

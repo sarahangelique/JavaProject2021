@@ -146,6 +146,32 @@ public class MusicHub {
 		return songsInAlbum;
 	}
 
+	public String getAlbumSongsSortedByGenre_Title (String albumTitle) throws NoAlbumFoundException {
+		StringBuffer songsAlbum = new StringBuffer();
+		Album theAlbum = null;
+		ArrayList<Song> songsInAlbum = new ArrayList<Song>();
+		for (Album al : albums) {
+			if (al.getTitle().toLowerCase().equals(albumTitle.toLowerCase())) {
+				theAlbum = al;
+				break;
+			}
+		}
+		if (theAlbum == null) throw new NoAlbumFoundException("No album with this title in the MusicHub!");
+
+		List<UUID> songIDs = theAlbum.getSongs();
+		for (UUID id : songIDs)
+			for (AudioElement el : elements) {
+				if (el instanceof Song) {
+					if (el.getUUID().equals(id)) songsInAlbum.add((Song)el);
+				}
+			}
+		Collections.sort(songsInAlbum, new SortByGenre());
+
+		for(Song song : songsInAlbum)
+			songsAlbum.append(song.getTitle()+ "\n");
+		return songsAlbum.toString();
+	}
+
 	public void addElementToAlbum(String elementTitle, String albumTitle) throws NoAlbumFoundException, NoElementFoundException {
 		Album theAlbum = null;
 		int i = 0;
@@ -269,7 +295,6 @@ public class MusicHub {
 			}  
 		}
 	}
-
 
 	public void saveAlbums () {
 		Document document = xmlHandler.createXMLDocument();
