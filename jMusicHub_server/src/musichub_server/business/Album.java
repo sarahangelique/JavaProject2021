@@ -4,7 +4,9 @@ import java.util.*;
 import org.w3c.dom.*;
 import java.text.*;
 
-
+/**
+ *
+ */
 public class Album {
 	private String title;
 	private String artist;
@@ -13,6 +15,16 @@ public class Album {
 	private Date date;
 	private ArrayList<UUID> songsUIDs;
 
+	/**
+	 * Constructor to create an Album with an UUID.
+	 *
+	 * @param title  The album's title.
+	 * @param artist  The album's artist.
+	 * @param lengthInSeconds  Length in seconds of the album.
+	 * @param id  ID of the album.
+	 * @param date  Released date of the album.
+	 * @param songsUIDs  ID of the songs within the album.
+	 */
 	public Album (String title, String artist, int lengthInSeconds, String id, String date, ArrayList<UUID> songsUIDs) {
 		this.title = title;
 		this.artist = artist;
@@ -26,7 +38,14 @@ public class Album {
 		}
 		this.songsUIDs = songsUIDs;
 	}
-	
+
+	/**
+	 * Second constructor to create an album that does not have an UUID.
+	 * @param title  The album's title.
+	 * @param artist  The album's artist.
+	 * @param lengthInSeconds  Length in seconds of the album.
+	 * @param date  Released date of the album.
+	 */
 	public Album (String title, String artist, int lengthInSeconds, String date) {
 		this.title = title;
 		this.artist = artist;
@@ -40,7 +59,14 @@ public class Album {
 		}
 		this.songsUIDs = new ArrayList<UUID>();
 	}
-	
+
+	/**
+	 * Gets all the tags in the XML file related to the album
+	 * If the tag UUID is empty, it creates a new one
+	 *
+	 * @param xmlElement  It allows to to go through each tag and retrieve its content.
+	 * @throws Exception  Exception happens if the album or a song does not have an UUID
+	 */
 	public Album (Element xmlElement) throws Exception {
 		try {
 			this.title = xmlElement.getElementsByTagName("title").item(0).getTextContent();
@@ -82,30 +108,60 @@ public class Album {
 		}
 	}
 
+	/**
+	 * Adds a song to an album.
+	 *
+	 * @param song  UUID of a song of the album
+	 */
 	public void addSong (UUID song)
 	{
 		songsUIDs.add(song);
 	}
-	
-	
+
+	/**
+	 * Returns the UUID of all songs of an album.
+	 *
+	 * @return
+	 */
 	public List<UUID> getSongs() {
 		return songsUIDs;
 	}
-	
+
+	/**
+	 * Returns a list of ID of songs in a random order (shuffle functionality).
+	 *
+	 * @return
+	 */
 	public ArrayList<UUID> getSongsRandomly() {
 		ArrayList<UUID> shuffledSongs = songsUIDs;
 		Collections.shuffle(shuffledSongs);
 		return shuffledSongs;
 	}
-	
+
+	/**
+	 * Returns the title of a song.
+	 *
+	 * @return
+	 */
 	public String getTitle() {
 		return title;
 	}
-	
+
+	/**
+	 * Returns the date of an album
+	 *
+	 * @return
+	 */
 	public Date getDate() {
 		return date;
 	}
-	
+
+	/**
+	 * Creates an albums in a XML file
+	 *
+	 * @param document  Represents the entire XML file that manages albums.
+	 * @param parentElement  Represents the elements within the XML files.
+	 */
 	public void createXMLElement(Document document, Element parentElement) {
 		Element albumElement = document.createElement("album");
 		parentElement.appendChild(albumElement);

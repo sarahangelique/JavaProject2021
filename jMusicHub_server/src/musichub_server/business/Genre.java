@@ -1,5 +1,8 @@
 package musichub_server.business;
 
+/**
+ * Classifies Songs by Genre.
+ */
 public enum Genre {
 	JAZZ ("jazz"), CLASSIC ("classic"), HIPHOP ("hiphop"), ROCK ("rock"), POP("pop"), RAP("rap");
 	private String genre;

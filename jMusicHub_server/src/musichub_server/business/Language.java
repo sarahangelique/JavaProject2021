@@ -1,5 +1,8 @@
 package musichub_server.business;
 
+/**
+ * Classifies Audiobooks by Language.
+ */
 public enum Language {
 	FRENCH ("french"), ENGLISH ("english"), ITALIAN ("italian"), SPANISH ("spanish"), GERMAN("german");
 	private String language;

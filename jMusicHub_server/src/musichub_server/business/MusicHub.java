@@ -4,18 +4,27 @@ import java.util.*;
 import musichub_server.util.*;
 import org.w3c.dom.*;
 
+/**
+ * Class to compare two albums regarding their date
+ */
 class SortByDate implements Comparator<Album> {
 	public int compare(Album a1, Album a2) {
 			return a1.getDate().compareTo(a2.getDate());
 	} 
 }
 
+/**
+ * Class to compare two songs regarding their genre
+ */
 class SortByGenre implements Comparator<Song> {
 	public int compare(Song s1, Song s2) {
 			return s1.getGenre().compareTo(s2.getGenre());
 	} 
 }
 
+/**
+ * Class to compare two audio element regarding their author
+ */
 class SortByAuthor implements Comparator<AudioElement> {
 	public int compare(AudioElement e1, AudioElement e2) {
 			return e1.getArtist().compareTo(e2.getArtist());
@@ -33,7 +42,10 @@ public class MusicHub {
 	public static final String ELEMENTS_FILE_PATH = DIR + "\\files\\xml\\elements.xml";
 	
 	private XMLHandler xmlHandler = new XMLHandler();
-	
+
+	/**
+	 * Constructor
+	 */
 	public MusicHub () {
 		albums = new LinkedList<Album>();
 		playlists = new LinkedList<PlayList>();
@@ -42,19 +54,40 @@ public class MusicHub {
 		this.loadAlbums();
 		this.loadPlaylists();
 	}
-	
+
+	/**
+	 * Adds an AudioElement
+	 *
+	 * @param element
+	 */
 	public void addElement(AudioElement element) {
 		elements.add(element);
 	}
-	
+
+	/**
+	 * Adds an album
+	 *
+	 * @param album
+	 */
 	public void addAlbum(Album album) {
 		albums.add(album);
 	}
-	
+
+	/**
+	 * Adds a playlist
+	 *
+	 * @param playlist
+	 */
 	public void addPlaylist(PlayList playlist) {
 		playlists.add(playlist);
 	}
-	
+
+	/**
+	 * Delete a playlist
+	 *
+	 * @param playListTitle
+	 * @throws NoPlayListFoundException
+	 */
 	public void deletePlayList(String playListTitle) throws NoPlayListFoundException {
 		PlayList thePlayList = null;
 		boolean result = false;
@@ -81,7 +114,12 @@ public class MusicHub {
 	public Iterator<AudioElement> elements() { 
 		return elements.listIterator();
 	}
-	
+
+	/**
+	 * Returns all the albums titles sorted by date
+	 *
+	 * @return
+	 */
 	public String getAlbumsTitlesSortedByDate() {
 		StringBuffer titleList = new StringBuffer();
 		Collections.sort(albums, new SortByDate());
@@ -89,7 +127,12 @@ public class MusicHub {
 			titleList.append(al.getTitle()+ "\n");
 		return titleList.toString();
 	}
-	
+
+	/**
+	 * Returns all the audiobooks titles sorted by author
+	 *
+	 * @return
+	 */
 	public String getAudiobooksTitlesSortedByAuthor() {
 		StringBuffer titleList = new StringBuffer();
 		List<AudioElement> audioBookList = new ArrayList<AudioElement>();
@@ -102,6 +145,13 @@ public class MusicHub {
 		return titleList.toString();
 	}
 
+	/**
+	 * Goes through the list of songs in an album to get a particular song.
+	 *
+	 * @param albumTitle
+	 * @return
+	 * @throws NoAlbumFoundException
+	 */
 	public List<AudioElement> getAlbumSongs (String albumTitle) throws NoAlbumFoundException {
 		Album theAlbum = null;
 		ArrayList<AudioElement> songsInAlbum = new ArrayList<AudioElement>();
@@ -124,6 +174,13 @@ public class MusicHub {
 		
 	}
 
+	/**
+	 * Gets all the title of the songs.
+	 *
+	 * @param albumTitle
+	 * @return
+	 * @throws NoAlbumFoundException
+	 */
 	public String getAlbumSongs_Title (String albumTitle) throws NoAlbumFoundException {
 		StringBuffer songsAlbum = new StringBuffer();
 		Album theAlbum = null;
@@ -148,7 +205,14 @@ public class MusicHub {
 			songsAlbum.append(song.getTitle()+ "\n");
 		return songsAlbum.toString();
 	}
-	
+
+	/**
+	 * Returns all songs of an album asorted by Genre.
+	 *
+	 * @param albumTitle
+	 * @return
+	 * @throws NoAlbumFoundException
+	 */
 	public List<Song> getAlbumSongsSortedByGenre (String albumTitle) throws NoAlbumFoundException {
 		Album theAlbum = null;
 		ArrayList<Song> songsInAlbum = new ArrayList<Song>();
@@ -171,6 +235,13 @@ public class MusicHub {
 		return songsInAlbum;
 	}
 
+	/**
+	 * Get the title of all songs in order by Genre.
+	 *
+	 * @param albumTitle
+	 * @return
+	 * @throws NoAlbumFoundException
+	 */
 	public String getAlbumSongsSortedByGenre_Title (String albumTitle) throws NoAlbumFoundException {
 		StringBuffer songsAlbum = new StringBuffer();
 		Album theAlbum = null;
@@ -197,6 +268,14 @@ public class MusicHub {
 		return songsAlbum.toString();
 	}
 
+	/**
+	 * Adds an element to an album.
+	 *
+	 * @param elementTitle  Title of the element.
+	 * @param albumTitle  Album's title.
+	 * @throws NoAlbumFoundException  Occurs when we could not find the album.
+	 * @throws NoElementFoundException  Occurs when we could not find the elemnt.
+	 */
 	public void addElementToAlbum(String elementTitle, String albumTitle) throws NoAlbumFoundException, NoElementFoundException {
 		Album theAlbum = null;
 		int i = 0;
@@ -226,7 +305,15 @@ public class MusicHub {
 		}
 		else throw new NoAlbumFoundException("Album " + albumTitle + " not found!");
 	}
-	
+
+	/**
+	 * Adds an element to a playlist.
+	 *
+	 * @param elementTitle  Titlte of an element of the playlist.
+	 * @param playListTitle  Title of the playlist.
+	 * @throws NoPlayListFoundException  Occurs when we could not find the Playlist.
+	 * @throws NoElementFoundException  Occurs when we could not find the element.
+	 */
 	public void addElementToPlayList(String elementTitle, String playListTitle) throws NoPlayListFoundException, NoElementFoundException {
 		PlayList thePlaylist = null;
         int i = 0;
@@ -257,7 +344,11 @@ public class MusicHub {
 			
 		} else throw new NoPlayListFoundException("Playlist " + playListTitle + " not found!");
 	}
-	
+
+	/**
+	 * Reads the albums in the XML file to retrieve them in a list.
+	 * The purpose is to be able to display them later.
+	 */
 	private void loadAlbums () {
 		NodeList albumNodes = xmlHandler.parseXMLFile(ALBUMS_FILE_PATH);
 		if (albumNodes == null) return;
@@ -275,7 +366,11 @@ public class MusicHub {
 			}  
 		}
 	}
-	
+
+	/**
+	 * Reads the playlists in the XML file to retrieve them in a list.
+	 * The purpose is to be able to display them later.
+	 */
 	private void loadPlaylists () {
 		NodeList playlistNodes = xmlHandler.parseXMLFile(PLAYLISTS_FILE_PATH);
 		if (playlistNodes == null) return;
@@ -293,7 +388,11 @@ public class MusicHub {
 			}  
 		}
 	}
-	
+
+	/**
+	 * Reads the elements of the XML file to retrieve them in a list.
+	 * The purpose is to be able to display them later.
+	 */
 	private void loadElements () {
 		NodeList audioelementsNodes = xmlHandler.parseXMLFile(ELEMENTS_FILE_PATH);
 		if (audioelementsNodes == null) return;
@@ -321,6 +420,9 @@ public class MusicHub {
 		}
 	}
 
+	/**
+	 * Save all albums in XML file.
+	 */
 	public void saveAlbums () {
 		Document document = xmlHandler.createXMLDocument();
 		if (document == null) return;
@@ -336,7 +438,10 @@ public class MusicHub {
 		}
 		xmlHandler.createXMLFile(document, ALBUMS_FILE_PATH);
 	}
-	
+
+	/**
+	 * Saves all playlists in a XML file.
+	 */
 	public void savePlayLists () {
 		Document document = xmlHandler.createXMLDocument();
 		if (document == null) return;
@@ -352,7 +457,10 @@ public class MusicHub {
 		}
 		xmlHandler.createXMLFile(document, PLAYLISTS_FILE_PATH);
 	}
-	
+
+	/**
+	 * Saves all elements in a XML file.
+	 */
 	public void saveElements() {
 		Document document = xmlHandler.createXMLDocument();
 		if (document == null) return;
